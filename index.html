@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zineddine Tighidet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 40px 30px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        
+        .title {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .nav {
+            list-style: none;
+        }
+        
+        .nav li {
+            margin-bottom: 12px;
+        }
+        
+        .nav a {
+            color: #555;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav a:hover {
+            color: #222;
+            border-bottom-color: #222;
+        }
+        
+        .nav a.active {
+            color: #222;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .social-links a:hover {
+            color: #222;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            padding: 40px 60px;
+            max-width: 800px;
+            flex: 1;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .section p {
+            margin-bottom: 16px;
+            color: #555;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .project-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        
+        .project-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        
+        .project-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .project-description {
+            color: #555;
+        }
+        
+        .publication-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        
+        .publication-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #222;
+        }
+        
+        .publication-title a {
+            color: #222;
+            text-decoration: none;
+        }
+        
+        .publication-title a:hover {
+            color: #007bff;
+        }
+        
+        .publication-meta {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .name {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="profile-pic">
+            <img src="assets/profile_picture.jpg" alt="Zineddine Tighidet" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"/>
+        </div>
+        
+        <h1 class="name">Zineddine Tighidet</h1>
+        <p class="title">PhD candidate in Mechanistic Interpretability</p>
+        
+        <nav>
+            <ul class="nav">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/zineddine-tighidet-840404188/" target="_blank">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        </div>
+    </aside>
+    
+    <main class="main-content">
+        <section id="about" class="section">
+            <h2>About</h2>
+            <p>I work on mechanistic interpretability, focusing on how language models handle knowledge and process information. My research particularly investigates tricky situations such as conflicts between learned parametric knowledge and contextual knowledge, with the goal of mitigating hallucinations in large language models.</p>
+            <p>I enjoy building practical ML systems end‑to‑end: data, modeling, evaluation, and deployment, with a particular focus on understanding the internal mechanisms of neural networks.</p>
+        </section>
+        
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <div class="project-item">
+                <div class="project-title">PhD, Natural Language Processing</div>
+                <div class="project-meta">BNP Paribas & Sorbonne University</div>
+            </div>
+        </section>
+        
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            <div class="project-item">
+                <div class="project-title">PhD Researcher</div>
+                <div class="project-meta">BNP Paribas · Sorbonne University</div>
+                <div class="project-description">Mechanistic interpretability; knowledge handling in language models; hallucination mitigation</div>
+            </div>
+        </section>
+        
+        <section id="research" class="section">
+            <h2>Research Focus</h2>
+            <div class="project-item">
+                <div class="project-title">Mechanistic Interpretability</div>
+                <div class="project-meta">Understanding internal mechanisms of language models</div>
+                <div class="project-description">Developing techniques to understand how language models process and integrate different sources of knowledge.</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Knowledge Source Attribution</div>
+                <div class="project-meta">Parametric vs Contextual Knowledge</div>
+                <div class="project-description">Investigating conflicts between learned parametric knowledge and contextual information to mitigate hallucinations.</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Probing Techniques</div>
+                <div class="project-meta">Model Analysis and Evaluation</div>
+                <div class="project-description">Developing probing methodologies to understand model behavior and knowledge processing mechanisms.</div>
+            </div>
+        </section>
+        
+        <section id="publications" class="section">
+            <h2>Publications</h2>
+            <div class="publication-item">
+                <div class="publication-title">
+                    <a href="projects/project-emnlp2025.html">Context Copying Modulation: The Role of Entropy Neurons in Managing Parametric and Contextual Knowledge Conflicts</a>
+                </div>
+                <div class="publication-meta">Zineddine Tighidet, et al. · EMNLP 2025</div>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">
+                    <a href="projects/project-blackboxnlp2024-probing-language-models-knowledge-source.html">Probing Language Models on Their Knowledge Source</a>
+                </div>
+                <div class="publication-meta">Z Tighidet, A Mogini, J Mei, B Piwowarski, P Gallinari · BlackBoxNLP@EMNLP 2024</div>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">
+                    <a href="projects/project-alta2022-fine-tuning-parsing-distinction.html">Fine-tuning a Subtle Parsing Distinction Using a Probabilistic Decision Tree: the Case of Postnominal "that" in Noun Complement Clauses vs. Relative Clauses</a>
+                </div>
+                <div class="publication-meta">Z Tighidet, N Ballier · ALTA 2022</div>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">
+                    <a href="#">Réduction de la Dimension et Classification: approche jointe</a>
+                </div>
+                <div class="publication-meta">Z Tighidet, L Labiod, M Nadif · SFC2023 · 2023</div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>The fastest way to reach me is via <a href="https://www.linkedin.com/in/zineddine-tighidet-840404188/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        </section>
+    </main>
+    
+    <script>
+        // Simple navigation highlighting
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

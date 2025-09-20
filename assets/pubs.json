@@ -1,0 +1,25 @@
+{
+  "source": "google_scholar",
+  "profile": "https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en",
+  "count": 3,
+  "items": [
+    {
+      "title": "Probing Language Models on Their Knowledge Source",
+      "authors": "Z Tighidet, A Mogini, J Mei, B Piwowarski, P Gallinari",
+      "venue": "BlackBoxNLP@EMNLP2024",
+      "year": "2024"
+    },
+    {
+      "title": "Réduction de la Dimension et Classification: approche jointe",
+      "authors": "Z Tighidet, L Labiod, M Nadif",
+      "venue": "SFC2023",
+      "year": "2023"
+    },
+    {
+      "title": "Fine-tuning a Subtle Parsing Distinction Using a Probabilistic Decision Tree: the Case of Postnominal \"that\" in Noun Complement Clauses vs. Relative Clauses",
+      "authors": "Z Tighidet, N Ballier",
+      "venue": "ALTA2022",
+      "year": "2022"
+    }
+  ]
+}

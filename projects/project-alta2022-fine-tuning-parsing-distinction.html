@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine-tuning a Subtle Parsing Distinction Using a Probabilistic Decision Tree - Zineddine Tighidet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .back-link {
+            margin-bottom: 30px;
+        }
+        
+        .back-link a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .back-link a:hover {
+            color: #333;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .paper-meta {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-item {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .meta-label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .abstract {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #222;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .links {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+                
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .links a:hover {
+            background: #0056b3;
+        }
+        
+        .links a.secondary {
+            background: #6c757d;
+        }
+        
+        .links a.secondary:hover {
+            background: #545b62;
+        }
+        
+        .links a.github {
+            background: #24292e;
+        }
+        
+        .links a.github:hover {
+            background: #1a1e22;
+        }
+        
+        .links a.arxiv {
+            background: #b31b1b;
+        }
+        
+        .links a.arxiv:hover {
+            background: #8b0000;
+        }
+        
+        .logo {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .links a:hover {
+            background: #0056b3;
+        }
+        
+        .links a.secondary {
+            background: #6c757d;
+        }
+        
+        .links a.secondary:hover {
+            background: #545b62;
+        }
+        
+        .links a.github {
+            background: #24292e;
+        }
+        
+        .links a.github:hover {
+            background: #1a1e22;
+        }
+        
+        .links a.arxiv {
+            background: #b31b1b;
+        }
+        
+        .links a.arxiv:hover {
+            background: #8b0000;
+        }
+        
+        .logo {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .links a:hover {
+            background: #0056b3;
+        }
+        
+        .links a.secondary {
+            background: #6c757d;
+        }
+        
+        .links a.secondary:hover {
+            background: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-link">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+    
+    <h1>Fine-tuning a Subtle Parsing Distinction Using a Probabilistic Decision Tree: the Case of Postnominal "that" in Noun Complement Clauses vs. Relative Clauses</h1>
+    
+    <div class="paper-meta">
+        <div class="meta-item">
+            <span class="meta-label">Authors:</span> Z Tighidet, N Ballier
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Venue:</span> ALTA2022
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Year:</span> 2022
+        </div>
+    </div>
+    
+    <div class="abstract">
+        <strong>Abstract:</strong><br>
+        This paper addresses a subtle parsing distinction in English grammar, specifically the postnominal 'that' in noun complement clauses versus relative clauses. We develop a probabilistic decision tree approach to fine-tune models on this challenging linguistic distinction. The work demonstrates how machine learning techniques can be applied to handle nuanced grammatical phenomena that are difficult for traditional parsing approaches.
+    </div>
+    
+    <div class="section">
+        <h2>Key Contributions</h2>
+        <ul>
+            <li>Probabilistic decision tree approach for subtle parsing distinctions</li>
+            <li>Fine-tuning methodology for grammatical nuances in English</li>
+            <li>Analysis of postnominal 'that' parsing challenges</li>
+            <li>Evaluation framework for grammatical parsing tasks</li>
+            <li>Comparison with traditional parsing approaches</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Methodology</h2>
+        <p>We employ probabilistic decision trees combined with fine-tuning techniques to address the challenging distinction between noun complement clauses and relative clauses. The approach includes careful annotation and evaluation protocols to ensure accurate classification of these subtle grammatical structures.</p>
+        
+        <p>The methodology involves creating a dataset of carefully annotated examples, training probabilistic decision trees on linguistic features, and fine-tuning the models to improve performance on this specific grammatical distinction. We evaluate the approach using standard parsing metrics and compare it with existing methods.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Linguistic Challenge</h2>
+        <p>The distinction between noun complement clauses and relative clauses with postnominal 'that' is particularly challenging because:</p>
+        <ul>
+            <li>Both structures use similar syntactic patterns</li>
+            <li>Contextual cues are often subtle and require deep linguistic understanding</li>
+            <li>Traditional rule-based approaches struggle with ambiguous cases</li>
+            <li>Machine learning approaches need careful feature engineering</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Results</h2>
+        <p>Our probabilistic decision tree approach achieves significant improvements over baseline methods in distinguishing between noun complement clauses and relative clauses. The fine-tuning process allows the model to learn subtle linguistic patterns that are difficult to capture with traditional approaches.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Impact</h2>
+        <p>This work contributes to computational linguistics by developing methods for handling subtle grammatical distinctions. The findings have implications for improving parsing accuracy and linguistic understanding in NLP systems, particularly for applications that require precise grammatical analysis.</p>
+        
+        <p>The probabilistic decision tree approach can be extended to other challenging grammatical phenomena, providing a framework for addressing similar linguistic challenges in different languages and contexts.</p>
+    </div>
+    
+            <div class="links">
+        <a href="../assets/alta2022.pdf" target="_blank" class="arxiv">
+            <svg class="logo" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            Paper PDF
+        </a>
+        <a href="#" target="_blank" class="github">
+            <svg class="logo" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            Code Repository
+        </a>
+        <a href="#" target="_blank">
+            <svg class="logo" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Dataset
+        </a>
+        <a href="https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en" target="_blank" class="secondary">
+            <svg class="logo" viewBox="0 0 24 24">
+                <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5s-5.548 1.749-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+            </svg>
+            Google Scholar
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zineddine Tighidet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 40px 30px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        
+        .title {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .nav {
+            list-style: none;
+        }
+        
+        .nav li {
+            margin-bottom: 12px;
+        }
+        
+        .nav a {
+            color: #555;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .nav a:hover {
+            color: #222;
+            border-bottom-color: #222;
+        }
+        
+        .nav a.active {
+            color: #222;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .social-links a:hover {
+            color: #222;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            padding: 40px 60px;
+            max-width: 800px;
+            flex: 1;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .section p {
+            margin-bottom: 16px;
+            color: #555;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .project-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        
+        .project-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        
+        .project-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .project-description {
+            color: #555;
+        }
+        
+        .publication-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        
+        .publication-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #222;
+        }
+        
+        .publication-meta {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .name {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="profile-pic">
+            ZT
+        </div>
+        
+        <h1 class="name">Zineddine Tighidet</h1>
+        <p class="title">PhD candidate in NLP & ML</p>
+        
+        <nav>
+            <ul class="nav">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#work">Selected Work</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/zineddine-tighidet-840404188/" target="_blank">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        </div>
+    </aside>
+    
+    <main class="main-content">
+        <section id="about" class="section">
+            <h2>About</h2>
+            <p>I work on Natural Language Processing and Machine Learning with a focus on applied NLP for finance, information extraction, and reliable evaluation of large language models. I enjoy building practical ML systems end‑to‑end: data, modeling, evaluation, and deployment.</p>
+        </section>
+        
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <div class="project-item">
+                <div class="project-title">PhD, Natural Language Processing</div>
+                <div class="project-meta">Sorbonne University (in partnership with BNP Paribas)</div>
+            </div>
+        </section>
+        
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            <div class="project-item">
+                <div class="project-title">PhD Researcher</div>
+                <div class="project-meta">BNP Paribas · Sorbonne University</div>
+                <div class="project-description">NLP for finance; information extraction; LLM evaluation</div>
+            </div>
+        </section>
+        
+        <section id="work" class="section">
+            <h2>Selected Work</h2>
+            <div class="project-item">
+                <div class="project-title">Robust Evaluation of Language Models</div>
+                <div class="project-meta">Domain-specific information extraction in finance</div>
+                <div class="project-description">Emphasis on reproducibility and error analysis.</div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Data Pipelines and Benchmarking</div>
+                <div class="project-meta">Python, PyTorch, Transformers</div>
+                <div class="project-description">NLP experiments setup and data processing pipelines.</div>
+            </div>
+        </section>
+        
+        <section id="publications" class="section">
+            <h2>Publications</h2>
+            <div id="pubs-loading">Loading publications…</div>
+            <div id="pubs-list" hidden></div>
+            <p id="pubs-fallback" hidden>
+                Unable to load automatically right now. See the full list on <a href="https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+            </p>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>The fastest way to reach me is via <a href="https://www.linkedin.com/in/zineddine-tighidet-840404188/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        </section>
+    </main>
+    
+    <script>
+        // Simple navigation highlighting
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Load publications
+        (async function loadLocalPubs() {
+            const loading = document.getElementById('pubs-loading');
+            const list = document.getElementById('pubs-list');
+            const fallback = document.getElementById('pubs-fallback');
+            try {
+                const res = await fetch('assets/pubs.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('missing pubs.json');
+                const data = await res.json();
+                if (!data.items || data.items.length === 0) throw new Error('empty');
+                list.innerHTML = data.items.map(function(p){
+                    var parts = [];
+                    if (p.authors) parts.push(p.authors);
+                    if (p.venue) parts.push(p.venue);
+                    if (p.year) parts.push(p.year);
+                    var meta = parts.join(' · ');
+                    return '<div class="publication-item"><div class="publication-title">' + p.title + '</div><div class="publication-meta">' + meta + '</div></div>';
+                }).join('');
+                loading.hidden = true;
+                list.hidden = false;
+            } catch (e) {
+                loading.hidden = true;
+                fallback.hidden = false;
+            }
+        })();
+    </script>
+</body>
+</html>

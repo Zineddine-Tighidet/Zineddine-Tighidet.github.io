@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects — Zineddine Tighidet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <main class="container narrow">
+      <header class="top">
+        <h1><a href="/" style="text-decoration: none; color: inherit;">← Zineddine Tighidet</a></h1>
+        <p class="tag">Projects & Publications</p>
+      </header>
+
+      <section>
+        <h2>Recent Publications</h2>
+        
+        <article class="project-card">
+          <h3>Context Copying Modulation: The Role of Entropy Neurons in Managing</h3>
+          <div class="paper-meta">
+            <span class="venue">EMNLP 2025</span>
+            <span class="year">2025</span>
+            <span class="status">Accepted</span>
+          </div>
+          
+          <div class="paper-content">
+            <h4>Abstract</h4>
+            <p class="abstract">
+              The behavior of Large Language Models (LLMs) when facing contextual information that conflicts with their internal parametric knowledge is inconsistent, with no generally accepted explanation for the expected outcome distribution. Recent work has identified in autoregressive transformer models a class of neurons – called entropy neurons – that produce a significant effect on the model output entropy while having an overall moderate impact on the ranking of the predicted tokens. In this paper, we investigate the preliminary claim that these neurons are involved in inhibiting context copying behavior in transformers by looking at their role in resolving conflicts between contextual and parametric information. We show that entropy neurons are responsible for suppressing context copying behavior and modulating the model's response to conflicting information.
+            </p>
+            
+            <h4>Key Contributions</h4>
+            <ul class="contributions">
+              <li>Novel analysis of entropy neurons in transformer models</li>
+              <li>Framework for understanding context copying modulation</li>
+              <li>Systematic evaluation methodology for behavioral inconsistency</li>
+              <li>Insights into LLM conflict resolution mechanisms</li>
+            </ul>
+            
+            <h4>Technologies & Methods</h4>
+            <div class="project-meta">
+              <span class="tech">Large Language Models</span>
+              <span class="tech">Transformer Architecture</span>
+              <span class="tech">Entropy Analysis</span>
+              <span class="tech">Context Copying</span>
+              <span class="tech">Neural Analysis</span>
+              <span class="tech">Python</span>
+            </div>
+          </div>
+          
+          <div class="project-links">
+            <a href="assets/emnlp2025.pdf" target="_blank" class="btn">Read Full Paper (PDF)</a>
+            <a href="https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en" target="_blank" class="btn secondary">Google Scholar</a>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2>Research Projects</h2>
+        
+        <article class="project-card">
+          <h3>Robust Language Model Evaluation</h3>
+          <p>Developing comprehensive evaluation frameworks for large language models, with emphasis on domain-specific performance in financial NLP tasks. Focus on reproducibility, error analysis, and systematic benchmarking.</p>
+          <div class="project-meta">
+            <span class="tech">Python</span>
+            <span class="tech">PyTorch</span>
+            <span class="tech">Transformers</span>
+            <span class="tech">Evaluation</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Information Extraction for Finance</h3>
+          <p>Building practical NLP systems for extracting structured information from financial documents and reports. End-to-end pipeline development from data preprocessing to model deployment.</p>
+          <div class="project-meta">
+            <span class="tech">NLP</span>
+            <span class="tech">Information Extraction</span>
+            <span class="tech">Finance</span>
+            <span class="tech">Data Pipelines</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Data Pipeline Infrastructure</h3>
+          <p>Designing scalable data processing pipelines for NLP experiments, including automated benchmarking setups and evaluation metrics for reproducible research.</p>
+          <div class="project-meta">
+            <span class="tech">Data Engineering</span>
+            <span class="tech">MLOps</span>
+            <span class="tech">Evaluation</span>
+            <span class="tech">Automation</span>
+          </div>
+        </article>
+      </section>
+
+      <footer class="foot">
+        <small>© <span id="year"></span> Zineddine Tighidet</small>
+      </footer>
+    </main>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

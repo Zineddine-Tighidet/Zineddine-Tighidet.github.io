@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Copying Modulation: The Role of Entropy Neurons in Managing Parametric and Contextual Knowledge Conflicts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .back-link {
+            margin-bottom: 30px;
+        }
+        
+        .back-link a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .back-link a:hover {
+            color: #333;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .paper-meta {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-item {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .meta-label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .abstract {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #222;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .links {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+                
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .links a:hover {
+            background: #0056b3;
+        }
+        
+        .links a.secondary {
+            background: #6c757d;
+        }
+        
+        .links a.secondary:hover {
+            background: #545b62;
+        }
+        
+        .links a.github {
+            background: #24292e;
+        }
+        
+        .links a.github:hover {
+            background: #1a1e22;
+        }
+        
+        .links a.arxiv {
+            background: #b31b1b;
+        }
+        
+        .links a.arxiv:hover {
+            background: #8b0000;
+        }
+        
+        .logo {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="back-link">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <div class="links">
+        <!-- arXiv link -->
+        <a href="https://arxiv.org/abs/2509.10663" target="_blank" class="arxiv">
+            <svg class="logo" viewBox="0 0 512 230" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <text x="0" y="170" font-family="Helvetica, Arial, sans-serif" font-size="250" font-weight="bold" fill="white">
+                    ar
+                </text>
+                <text x="240" y="170" font-family="Helvetica, Arial, sans-serif" font-size="250" font-weight="bold" fill="white">
+                    X
+                </text>
+                <text x="310" y="170" font-family="Helvetica, Arial, sans-serif" font-size="250" font-weight="bold" fill="white">
+                    iv
+                </text>
+            </svg>
+            Paper
+        </a>
+        
+
+        <!-- GitHub link -->
+        <a href="#" target="_blank" class="github">
+            <svg class="logo" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            Code Repository
+        </a>
+
+        <!-- Google Scholar link -->
+        <a href="https://scholar.google.com/citations?user=jgle1SAAAAAJ&hl=en" target="_blank" class="secondary">
+            <svg class="logo" viewBox="0 0 24 24">
+                <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5s-5.548 1.749-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+            </svg>
+            Google Scholar
+        </a>
+    </div>
+
+    <div align="center">
+        <h1>Context Copying Modulation: The Role of Entropy Neurons in
+        <br>   
+        Managing Parametric and Contextual Knowledge Conflicts</h1>
+        <div>
+            <a href='https://zineddine-tighidet.github.io/' target='_blank'>Zineddine Tighidet</a><sup>1,2</sup>&emsp;
+            <a>Andrea Mogini</a><sup>1</sup>&emsp;
+            <a href='https://scholar.google.com/citations?user=IFLcfvUAAAAJ&hl=fr' target='_blank'>Hedi Ben-younes</a><sup>1</sup>&emsp;
+            <a href='https://www.jialimei.me' target='_blank'>Jiali Mei</a><sup>1</sup>&emsp;
+            <br>
+            <a href='https://pages.isir.upmc.fr/gallinari/' target='_blank'>Patrick Gallinari</a><sup>2,3</sup>&emsp;
+            <a href='https://www.piwowarski.fr' target='_blank'>Benjamin Piwowarski</a><sup>2</sup>&emsp;
+        </div>
+        <br>
+        <div>
+            <sup>1</sup>BNP Paribas, Paris, France&emsp;<br>
+            <sup>2</sup>Sorbonne Université, CNRS, ISIR, F-75005 Paris, France&emsp;<br>
+            <sup>3</sup>Criteo AI Lab, Paris, France&emsp;
+        </div>
+        <br>
+
+        Correspondence to: <em>zineddine.tighidet@{bnpparibas.com, sorbonne-universite.fr}</em>
+
+        <br><br>
+
+        <img src="../assets/entropy_neurons_schema.png" width="100%"/>
+        <!--<img src="../assets/entropy_neurons_mechanism_on_induction.gif" width="100%"/>-->
+    </div>
+    
+    <div class="section">
+        <h2>Abstract</h2>
+        <p>The behavior of Large Language Models (LLMs) when facing contextual information that conflicts with their internal parametric knowledge is inconsistent, with no generally accepted explanation for the expected outcome distribution. Recent work has identified in autoregressive transformer models a class of neurons -- called <em>entropy neurons</em> -- that produce a significant effect on the model while having an overall moderate impact on the ranking of the predicted tokens. In this paper, we investigate the preliminary claim that these neurons are involved in inhibiting context copying behavior in transformers by looking at their role in resolving conflicts between contextual and parametric information. We show that <em>entropy neurons</em> are responsible for suppressing context copying across a range of LLMs, and that ablating them leads to a substantial change in the generation process. These results enhance our understanding of the internal dynamics of LLMs when handling conflicting information.</p>
+    </div>
+
+                <div class="section">
+        <h2>Entropy Neurons Characteristics</h2>
+        
+        <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 10px; color: #333;">LogitVar</h3>
+                <p style="margin-bottom: 15px; color: #555; font-size: 14px;">
+                    This measure quantifies a neuron's direct effect on output logits variance. For a neuron $i$, it is defined as:
+                </p>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-size: 14px;">
+                $$
+                \mathrm{LogitVar}(w_{\mathrm{out}}^{(i)}) = \textbf{Var}\left\{ 
+                    \frac{
+                       {w}^{(t)}_\mathrm{U} 
+                       \cdot
+                       w_{\mathrm{out}}^{(i)}
+                    }{
+                        ||{w}^{(t)}_{\mathrm{U}}|| 
+                        \times
+                        ||w_{\mathrm{out}}^{(i)}||
+                    }
+                    ;
+                    t \in V
+                \right\}
+                $$
+                </div>
+                
+                <p style="margin-bottom: 20px; color: #555; font-size: 14px;">
+                    where $V$ is the set of tokens in the vocabulary and $w_U^{(t)}$ is the $t$-th row of $W_U$.
+                </p>
+                
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 10px; color: #333;">Effective Null Space Projection (ρ)</h3>
+                <p style="margin-bottom: 15px; color: #555; font-size: 14px;">
+                    This measure quantifies how much of a neuron's output aligns with directions that minimally impact the model's final output, forming the <strong>effective null space</strong> of the unembedding matrix $W_U$, denoted as $V_0$. For a neuron $i$, it is defined as:
+                </p>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px; font-size: 14px;">
+                $$
+                \rho_i = \frac{||\mathbf{V}_\mathrm{0}^\mathrm{T} w_{\mathrm{out}}^{\mathrm{(i)}}||}{||w_{\mathrm{out}}^{\mathrm{(i)}}||}.
+                $$
+                </div>
+            </div>
+            
+            <div style="flex: 1; text-align: center;">
+                <img src="../assets/Phi-1_5_logitvar_and_rho-nb_neurons_with_low_logitvar=12.png" 
+                     alt="Entropy Neurons Characteristics" 
+                     style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+                <p style="margin-top: 10px; font-size: 12px; color: #666; font-style: italic;">
+                    Visualization of entropy neurons characteristics showing LogitVar and $\rho$ measures $\text{(Phi-1.5 model)$
+                </p>
+            </div>
+        </div>
+    
+    <div class="section">
+        <h2>Ablation Results: Entropy Neurons Inhibit Context Copying</h2>
+        
+        <p style="margin-bottom: 20px; color: #555; font-size: 14px;">
+            Our ablation experiments demonstrate that entropy neurons play a crucial role in inhibiting context copying behavior. When entropy neurons are ablated, the model shows significant changes in how it handles conflicts between parametric and contextual knowledge.
+        </p>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="../assets/phi15_ablation_scores.png" 
+                 alt="Phi-1.5 Ablation Scores" 
+                 style="max-width: 90%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+            <p style="margin-top: 15px; font-size: 12px; color: #666; font-style: italic;">
+                Phi-1.5 ablation scores showing $\text{(a)}$ Global Transition Score distribution, $\text{(b)}$ Conversion Ratio for different knowledge sources, and $\text{(c)}$ Transition Scores between knowledge sources
+            </p>
+        </div>
+        
+        <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 10px; color: #333;">Key Findings</h3>
+                <ul style="color: #555; font-size: 14px; line-height: 1.6;">
+                    <li><strong>Global Transition Score:</strong> Entropy neurons show a Q-value of 99.0%, indicating their critical role in knowledge source transitions</li>
+                    <li><strong>Conversion Ratios:</strong> Ablating entropy neurons significantly increases conversion from ND $\text{(Not Defined)}$ to CK $\text{(Contextual Knowledge)}$</li>
+                    <li><strong>Context Copying Inhibition:</strong> The highlighted transition from ND to CK $\text{(2.5% vs 0.3% for random)}$ shows entropy neurons prevent inappropriate context copying</li>
+                </ul>
+            </div>
+            
+            <div style="flex: 1;">
+                <h4 style="font-size: 15px; font-weight: 500; margin-bottom: 10px; color: #333;">Implications</h4>
+            <p style="margin-bottom: 0; color: #555; font-size: 14px;">
+                These results provide strong evidence that entropy neurons are essential components in the model's ability to handle knowledge conflicts appropriately. Their ablation leads to increased context copying behavior, which can result in hallucinations when the contextual information conflicts with the model's parametric knowledge. This finding has important implications for understanding and improving the reliability of large language models in knowledge-intensive tasks.
+            </p>
+            </div>
+        </div>        
+    </div></div>
+</html>
