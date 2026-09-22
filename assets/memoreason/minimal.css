@@ -113,7 +113,6 @@ select {
 }
 
 .wordmark,
-.edition-link,
 .nav-shell nav a {
   text-decoration: none;
 }
@@ -146,22 +145,13 @@ select {
   font-weight: 650;
 }
 
-.nav-shell nav a,
-.edition-link {
+.nav-shell nav a {
   transition: color 160ms ease;
 }
 
 .nav-shell nav a:hover,
-.nav-shell nav a.is-current,
-.edition-link:hover {
+.nav-shell nav a.is-current {
   color: var(--accent);
-}
-
-.edition-link {
-  justify-self: end;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 650;
 }
 
 .hero {
@@ -3445,10 +3435,6 @@ select {
   }
 
   .nav-shell nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .edition-link {
     display: none;
   }
 
