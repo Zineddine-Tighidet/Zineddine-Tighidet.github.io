@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f0e8" />
+    <meta
+      name="citation_title"
+      content="MemoReason: Evaluating the Effect of Parametric Memory on Contextual Reasoning in LLMs"
+    />
+    <meta name="citation_author" content="Zineddine Tighidet" />
+    <meta name="citation_author" content="Andrea Mogini" />
+    <meta name="citation_author" content="Jiali Mei" />
+    <meta name="citation_author" content="Patrick Gallinari" />
+    <meta name="citation_author" content="Benjamin Piwowarski" />
+    <meta name="citation_publication_date" content="2026" />
+    <meta
+      name="citation_pdf_url"
+      content="https://zineddine-tighidet.github.io/assets/memoreason/memoreason-paper.pdf"
+    />
+    <meta
+      name="description"
+      content="MemoReason is a human-curated benchmark for measuring how parametric memory affects contextual reasoning in large language models."
+    />
+    <link rel="canonical" href="https://zineddine-tighidet.github.io/projects/memoreason/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MemoReason — Parametric memory meets contextual reasoning" />
+    <meta
+      property="og:description"
+      content="A controlled benchmark that pairs factual reasoning tasks with structurally identical fictitious counterparts."
+    />
+    <meta property="og:url" content="https://zineddine-tighidet.github.io/projects/memoreason/" />
+    <meta
+      property="og:image"
+      content="https://zineddine-tighidet.github.io/assets/memoreason/og-memoreason.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="MemoReason — Same reasoning. Different familiarity."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MemoReason — Parametric memory meets contextual reasoning" />
+    <meta
+      name="twitter:description"
+      content="A controlled benchmark that pairs factual reasoning tasks with structurally identical fictitious counterparts."
+    />
+    <meta
+      name="twitter:image"
+      content="https://zineddine-tighidet.github.io/assets/memoreason/og-memoreason.png"
+    />
+    <meta name="twitter:image:alt" content="MemoReason — Same reasoning. Different familiarity." />
+    <title>MemoReason — Evaluating Parametric Memory in LLM Reasoning</title>
+    <link rel="stylesheet" href="../../assets/memoreason/project.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="wordmark" href="#top" aria-label="MemoReason home">
+          <span class="wordmark-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+          <span>MemoReason</span>
+        </a>
+        <nav aria-label="Project navigation">
+          <a href="#benchmark">Benchmark</a>
+          <a href="#findings">Findings</a>
+          <a href="#resources">Resources</a>
+        </nav>
+        <a class="home-link" href="../../index.html">
+          <span class="home-full">Zineddine Tighidet</span>
+          <span class="home-compact">Portfolio</span>
+          <span class="home-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <div class="eyebrow-row">
+            <span class="eyebrow-note">Benchmark · Dataset · Evaluation</span>
+          </div>
+          <p class="hero-kicker">Parametric memory meets contextual reasoning</p>
+          <h1 id="hero-title">Memo<span>Reason</span></h1>
+          <p class="hero-deck">
+            When familiar facts become unfamiliar, reasoning gets harder—even when the task stays exactly the same.
+          </p>
+          <p class="paper-title">
+            Evaluating the Effect of Parametric Memory on Contextual Reasoning in LLMs
+          </p>
+
+          <div class="authors" aria-label="Authors">
+            <a href="https://zineddine-tighidet.github.io/">Zineddine Tighidet<sup>1,2</sup></a>
+            <span>Andrea Mogini<sup>1</sup></span>
+            <a href="https://www.jialimei.me/">Jiali Mei<sup>1</sup></a>
+            <a href="https://pages.isir.upmc.fr/gallinari/">Patrick Gallinari<sup>2,3</sup></a>
+            <a href="https://www.piwowarski.fr/">Benjamin Piwowarski<sup>2</sup></a>
+          </div>
+          <p class="affiliations">
+            <span><sup>1</sup> BNP Paribas</span>
+            <span><sup>2</sup> Sorbonne Université</span>
+            <span><sup>3</sup> Criteo AI Lab</span>
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="../../assets/memoreason/memoreason-paper.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Paper <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              class="button button-secondary"
+              href="https://huggingface.co/datasets/memoreason-anonymous/MemoReason"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Dataset <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              class="button button-secondary"
+              href="https://anonymous.4open.science/r/MemoReason-D40A/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Code <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <dl class="benchmark-facts" aria-label="Benchmark at a glance">
+          <div>
+            <dt>100</dt>
+            <dd>source documents</dd>
+          </div>
+          <div>
+            <dt>1,200</dt>
+            <dd>factual QA templates</dd>
+          </div>
+          <div>
+            <dt>10×</dt>
+            <dd>paired fictitious variants</dd>
+          </div>
+          <div>
+            <dt>9</dt>
+            <dd>LLMs evaluated</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="pairing-section" id="benchmark" aria-labelledby="pairing-title">
+        <div class="section-heading">
+          <p class="section-kicker">The controlled comparison</p>
+          <h2 id="pairing-title">Same reasoning. Different world.</h2>
+          <p>
+            MemoReason changes entity identities and values while preserving the evidence chain, question,
+            reasoning operation, and difficulty.
+          </p>
+        </div>
+
+        <div class="paired-example" aria-label="Paired factual and fictitious benchmark example">
+          <article class="example-card factual-card">
+            <div class="card-topline">
+              <span class="condition-label">Factual</span>
+              <span>Known entities</span>
+            </div>
+            <p class="document-copy">
+              The <mark class="entity entity-program">Apollo program</mark> was conceived in
+              <mark class="entity entity-year-a">1960</mark>. Its first crewed flight was in
+              <mark class="entity entity-year-b">1968</mark>.
+            </p>
+            <div class="qa-block">
+              <span class="qa-type">Temporal reasoning</span>
+              <p>How many years passed between conception and the first crewed flight?</p>
+              <p class="answer"><span>Answer</span> 8 years</p>
+            </div>
+          </article>
+
+          <div class="pair-bridge" aria-hidden="true">
+            <span>same structure</span>
+            <b>→</b>
+            <small>entities replaced<br />under constraints</small>
+          </div>
+
+          <article class="example-card fictitious-card">
+            <div class="card-topline">
+              <span class="condition-label">Fictitious</span>
+              <span>Novel entities</span>
+            </div>
+            <p class="document-copy">
+              <mark class="entity entity-program">Project Heliond</mark> was conceived in
+              <mark class="entity entity-year-a">1950</mark>. Its first crewed flight was in
+              <mark class="entity entity-year-b">1981</mark>.
+            </p>
+            <div class="qa-block">
+              <span class="qa-type">Temporal reasoning</span>
+              <p>How many years passed between conception and the first crewed flight?</p>
+              <p class="answer"><span>Answer</span> 31 years</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="pairing-caption">
+          A paired example from the Apollo template. Color-matched spans share the same semantic role;
+          replacement rules keep the new document internally consistent.
+        </p>
+      </section>
+
+      <section class="question-section" aria-labelledby="question-title">
+        <div class="section-shell question-intro">
+          <div>
+            <p class="section-kicker">The question behind the benchmark</p>
+            <h2 id="question-title">Do models reason from the document—or from what they already know?</h2>
+          </div>
+          <p>
+            For answerable tasks, familiar entities can make a reasoning problem easier even when the required
+            evidence appears in the prompt. MemoReason separates this broad familiarity effect from a stricter
+            failure mode: directly reproducing a memorized factual answer instead of solving the paired task.
+          </p>
+        </div>
+
+        <div class="section-shell hypothesis-grid">
+          <article class="hypothesis-card bias-card">
+            <span class="hypothesis-number" aria-hidden="true">01</span>
+            <p class="mini-kicker">Memory bias</p>
+            <h3>Familiar content improves contextual reasoning.</h3>
+            <p>
+              If this is true, accuracy should fall when known entities are replaced by plausible fictitious ones,
+              while the reasoning structure remains fixed.
+            </p>
+            <p class="hypothesis-status"><span aria-hidden="true">✓</span> Significant for 9/9 models on variant-answer reasoning</p>
+          </article>
+          <article class="hypothesis-card shortcut-card">
+            <span class="hypothesis-number" aria-hidden="true">02</span>
+            <p class="mini-kicker">Strong parametric shortcut</p>
+            <h3>Models skip the reasoning and recall the factual answer.</h3>
+            <p>
+              A targeted error analysis checks whether failures on fictitious variant-answer questions reproduce
+              the answer to their factual counterpart.
+            </p>
+            <p class="hypothesis-status"><span aria-hidden="true">↘</span> Rare—not the dominant failure mode</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="method-section" id="method" aria-labelledby="method-title">
+        <div class="section-shell split-heading">
+          <div>
+            <p class="section-kicker">Benchmark construction</p>
+            <h2 id="method-title">Controlled by design.<br />Curated by humans.</h2>
+          </div>
+          <p>
+            Each source document becomes a reusable template. Annotators identify replaceable spans, encode
+            dependency rules, and write questions before ten consistent fictitious worlds are sampled.
+          </p>
+        </div>
+
+        <ol class="section-shell pipeline" aria-label="MemoReason construction pipeline">
+          <li>
+            <span>01</span>
+            <strong>Source</strong>
+            <p>Select a self-contained factual document.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <strong>Annotate</strong>
+            <p>Type entities and encode cross-entity rules.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <strong>Replace</strong>
+            <p>Generate plausible, internally consistent worlds.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <strong>Compare</strong>
+            <p>Evaluate paired answers with the same QA contract.</p>
+          </li>
+        </ol>
+
+        <div class="section-shell method-details">
+          <article class="taxonomy-card">
+            <div class="detail-heading">
+              <p class="mini-kicker">Entity taxonomy</p>
+              <span>14 types</span>
+            </div>
+            <div class="chip-cloud" aria-label="Fourteen entity types">
+              <span>Person</span><span>Place</span><span>Event</span><span>Military organization</span>
+              <span>Enterprise organization</span><span>NGO</span><span>Government organization</span><span>Educational organization</span>
+              <span>Media organization</span><span>Temporal</span><span>Number</span><span>Award</span>
+              <span>Legal instrument</span><span>Product</span>
+            </div>
+          </article>
+
+          <article class="qa-contract-card">
+            <div class="detail-heading">
+              <p class="mini-kicker">Question–answer contract</p>
+              <span>12 QAs / template</span>
+            </div>
+            <table class="qa-matrix">
+              <caption>Four question classes crossed with three answer classes</caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span class="visually-hidden">Question class</span></th>
+                  <th scope="col">Variant</th>
+                  <th scope="col">Invariant</th>
+                  <th scope="col">Refusal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Extractive</th><td>Included</td><td>Included</td><td>Included</td></tr>
+                <tr><th scope="row">Arithmetic</th><td>Included</td><td>Included</td><td>Included</td></tr>
+                <tr><th scope="row">Temporal</th><td>Included</td><td>Included</td><td>Included</td></tr>
+                <tr><th scope="row">Inference</th><td>Included</td><td>Included</td><td>Included</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </section>
+
+      <section class="findings-section" id="findings" aria-labelledby="findings-title">
+        <div class="section-shell split-heading findings-heading">
+          <div>
+            <p class="section-kicker">What the evaluation reveals</p>
+            <h2 id="findings-title">Familiarity helps.<br />Simple recall does not explain why.</h2>
+          </div>
+          <p>
+            Across nine recent LLMs, paired document-level inference shows a robust reasoning penalty after
+            factual entities are replaced. Yet the corresponding memorized factual answer is seldom emitted.
+          </p>
+        </div>
+
+        <div class="section-shell finding-grid">
+          <article>
+            <strong>9 / 9</strong>
+            <h3>models drop significantly on variant-answer reasoning</h3>
+            <p>The aggregate reasoning penalty ranges from 6.5 to 8.1 percentage points.</p>
+          </article>
+          <article>
+            <strong>15.7<small> pp</small></strong>
+            <h3>largest significant effect</h3>
+            <p>Inference questions are the most affected reasoning class.</p>
+          </article>
+          <article>
+            <strong>1.0–3.2<small>%</small></strong>
+            <h3>reasoning shortcut rate</h3>
+            <p>Among failed fictitious variant-answer reasoning items, factual-answer reproduction is rare.</p>
+          </article>
+          <article>
+            <strong>8 / 9</strong>
+            <h3>show significant flip asymmetry</h3>
+            <p>Across all questions, errors are more likely when a previously correct factual item becomes fictitious.</p>
+          </article>
+        </div>
+
+        <figure class="section-shell replacement-figure">
+          <div class="figure-copy">
+            <p class="mini-kicker">Partial replacement experiment</p>
+            <h3>Mixed contexts are often hardest.</h3>
+            <p>
+              All seven curves fall below the factual baseline by 50% replacement, and six recover after minima
+              between 50% and 80%. The pattern is common but not universal in magnitude; overlapping confidence
+              intervals do not establish a causal mechanism on their own.
+            </p>
+            <button class="figure-expand" type="button" data-dialog-open="curves-dialog">
+              Expand figure <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="figure-frame">
+            <img
+              src="../../assets/memoreason/replacement-curves.png"
+              alt="Seven model accuracy curves across entity replacement proportions from zero to one hundred percent"
+              width="1564"
+              height="876"
+              loading="lazy"
+            />
+          </div>
+          <figcaption>
+            Accuracy as the share of replaced entities increases. Bands show 95% document-cluster bootstrap
+            intervals; dashed lines mark each model's factual baseline.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="leaderboard-section" aria-labelledby="leaderboard-title">
+        <div class="section-shell split-heading compact-heading">
+          <div>
+            <p class="section-kicker">Model report card</p>
+            <h2 id="leaderboard-title">One score is not enough.</h2>
+          </div>
+          <p>
+            High fictitious accuracy measures contextual reasoning ability. A small gap measures robustness only
+            when read alongside that accuracy. Sort the columns to inspect both.
+          </p>
+        </div>
+
+        <div class="section-shell leaderboard-wrap">
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable MemoReason leaderboard">
+            <table class="leaderboard-table">
+              <caption>
+                MemoReason model report card. Rank is based on fictitious accuracy; metric columns are sortable.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span class="static-heading">Rank</span></th>
+                  <th scope="col" data-sort-header="model" aria-sort="none">
+                    <button type="button" data-sort="model">Model <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="accuracy" aria-sort="descending">
+                    <button type="button" data-sort="accuracy">Fictitious acc. <span aria-hidden="true">↓</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="gap" aria-sort="none">
+                    <button type="button" data-sort="gap">Gap <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="ratio" aria-sort="none">
+                    <button type="button" data-sort="ratio">Error ratio <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col" data-sort-header="shortcut" aria-sort="none">
+                    <button type="button" data-sort="shortcut">Reasoning shortcut <span aria-hidden="true">↕</span></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-model="Claude Sonnet 4.6" data-accuracy="92.30" data-gap="3.37" data-ratio="1.78" data-shortcut="2.01">
+                  <td class="rank-cell">1</td><th scope="row">Claude Sonnet 4.6</th><td>92.30%</td><td>3.37 pp</td><td>1.78×</td><td>2.01%</td>
+                </tr>
+                <tr data-model="GPT-OSS 120B" data-accuracy="90.28" data-gap="3.38" data-ratio="1.53" data-shortcut="1.33">
+                  <td class="rank-cell">2</td><th scope="row">GPT-OSS 120B</th><td>90.28%</td><td>3.38 pp</td><td>1.53×</td><td>1.33%</td>
+                </tr>
+                <tr data-model="Qwen3.5 27B" data-accuracy="88.80" data-gap="2.95" data-ratio="1.36" data-shortcut="1.18">
+                  <td class="rank-cell">3</td><th scope="row">Qwen3.5 27B</th><td>88.80%</td><td>2.95 pp</td><td>1.36×</td><td>1.18%</td>
+                </tr>
+                <tr data-model="GPT-OSS 20B" data-accuracy="87.65" data-gap="3.10" data-ratio="1.34" data-shortcut="2.18">
+                  <td class="rank-cell">4</td><th scope="row">GPT-OSS 20B</th><td>87.65%</td><td>3.10 pp</td><td>1.34×</td><td>2.18%</td>
+                </tr>
+                <tr data-model="Qwen3.5 35B-A3B" data-accuracy="86.34" data-gap="2.74" data-ratio="1.25" data-shortcut="2.33">
+                  <td class="rank-cell">5</td><th scope="row">Qwen3.5 35B-A3B</th><td>86.34%</td><td>2.74 pp</td><td>1.25×</td><td>2.33%</td>
+                </tr>
+                <tr data-model="Gemma-4 26B-A4B-it" data-accuracy="85.91" data-gap="1.34" data-ratio="1.11" data-shortcut="1.10">
+                  <td class="rank-cell">6</td><th scope="row">Gemma-4 26B-A4B-it</th><td>85.91%</td><td>1.34 pp</td><td>1.11×</td><td>1.10%</td>
+                </tr>
+                <tr data-model="Llama-3.1 8B-Instruct" data-accuracy="76.88" data-gap="1.37" data-ratio="1.06" data-shortcut="3.19">
+                  <td class="rank-cell">7</td><th scope="row">Llama-3.1 8B-Instruct</th><td>76.88%</td><td>1.37 pp</td><td>1.06×</td><td>3.19%</td>
+                </tr>
+                <tr data-model="OLMo-3 7B-Think" data-accuracy="75.61" data-gap="5.31" data-ratio="1.28" data-shortcut="0.98">
+                  <td class="rank-cell">8</td><th scope="row">OLMo-3 7B-Think</th><td>75.61%</td><td>5.31 pp</td><td>1.28×</td><td>0.98%</td>
+                </tr>
+                <tr data-model="OLMo-3 7B-Instruct" data-accuracy="66.42" data-gap="2.83" data-ratio="1.09" data-shortcut="2.53">
+                  <td class="rank-cell">9</td><th scope="row">OLMo-3 7B-Instruct</th><td>66.42%</td><td>2.83 pp</td><td>1.09×</td><td>2.53%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="metric-notes" aria-label="Metric definitions">
+            <p><strong>Fictitious accuracy</strong> is overall accuracy after full entity replacement.</p>
+            <p><strong>Gap</strong> is factual accuracy minus fictitious accuracy, in percentage points.</p>
+            <p><strong>Error ratio</strong> is fictitious error divided by factual error.</p>
+            <p><strong>Reasoning shortcut rate</strong> is direct factual-answer reproduction among failed fictitious variant-answer reasoning items.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="curation-section" aria-labelledby="curation-title">
+        <div class="section-shell curation-grid">
+          <div class="curation-media">
+            <img
+              src="../../assets/memoreason/annotation-interface.png"
+              alt="MemoReason annotation interface showing a source document, entity annotations, rules, and questions"
+              width="3014"
+              height="1476"
+              loading="lazy"
+            />
+          </div>
+          <div class="curation-copy">
+            <p class="section-kicker">Human-in-the-loop curation</p>
+            <h2 id="curation-title">Automation proposes.<br />Annotators decide.</h2>
+            <p>
+              The interface keeps document spans, replacement rules, and question contracts visible together.
+              Language models assist candidate generation, but humans validate every released template and answer.
+            </p>
+            <dl class="curation-stats">
+              <div><dt>38.0</dt><dd>entities per document on average</dd></div>
+              <div><dt>31.2</dt><dd>replacement rules per document</dd></div>
+              <div><dt>≈50%</dt><dd>of proposed QAs needed human intervention</dd></div>
+              <div><dt>200 / 200</dt><dd>observed human agreement with Judge Match</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence-section" aria-labelledby="evidence-title">
+        <div class="section-shell split-heading compact-heading">
+          <div>
+            <p class="section-kicker">Stress tests &amp; controls</p>
+            <h2 id="evidence-title">The effect survives the obvious alternatives.</h2>
+          </div>
+          <p>
+            MemoReason reports paired uncertainty at the source-document level and tests whether decoding,
+            frequency, judging, or extra reasoning effort can account for the observed gap.
+          </p>
+        </div>
+
+        <div class="section-shell evidence-grid">
+          <article>
+            <span>01</span><h3>Document-cluster bootstrap</h3>
+            <p>Variants stay grouped by source document, preserving the benchmark's dependency structure.</p>
+          </article>
+          <article>
+            <span>02</span><h3>Calibrated answer judge</h3>
+            <p>Judge Match agrees on all 200 human-audited items; the 95% lower confidence bound is 98.2%.</p>
+          </article>
+          <article>
+            <span>03</span><h3>Temperature robustness</h3>
+            <p>Across two models and three temperatures, gap changes remain between 0.03 and 0.29 points.</p>
+          </article>
+          <article>
+            <span>04</span><h3>Frequency is not enough</h3>
+            <p>Entity frequency correlates weakly with the drop: Pearson r = −0.103, with a CI crossing zero.</p>
+          </article>
+          <article>
+            <span>05</span><h3>More effort is not a cure</h3>
+            <p>GPT-OSS-20B's gap remains significant at low, medium, and high reasoning effort.</p>
+          </article>
+          <article>
+            <span>06</span><h3>Reasoning helps, the gap remains</h3>
+            <p>OLMo-3-Think raises absolute accuracy over Instruct, while the reasoning gap persists.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="paper-section" aria-labelledby="paper-title">
+        <div class="section-shell paper-panel">
+          <div class="paper-copy">
+            <p class="section-kicker">Paper</p>
+            <h2 id="paper-title">A controlled lens on memory and reasoning.</h2>
+            <p class="abstract-label">Abstract</p>
+            <p class="abstract-copy">
+              MemoReason pairs factual reasoning tasks with structurally identical fictitious versions, replacing
+              real entities with type-matched novel ones while keeping task complexity fixed. Evaluations of nine
+              recent LLMs reveal a consistent memory bias: models reason better in familiar worlds. Targeted error
+              analysis shows that direct factual-answer recall is uncommon, pointing to a subtler interaction
+              between memorized knowledge and contextual reasoning.
+            </p>
+            <a
+              class="text-link"
+              href="../../assets/memoreason/memoreason-paper.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Read the 32-page manuscript <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <aside class="limitations" aria-labelledby="limitations-title">
+            <p class="mini-kicker" id="limitations-title">Scope &amp; limitations</p>
+            <ul>
+              <li>English-only documents across 100 sources and nine themes.</li>
+              <li>Conclusions are scoped to nine models and the evaluated prompting setup.</li>
+              <li>Main results use greedy decoding; temperature is swept on two models.</li>
+              <li>The benchmark isolates familiarity effects, not every form of language understanding.</li>
+              <li>Fictitious passages are controlled test artifacts, not real-world facts.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="citation-section" id="resources" aria-labelledby="resources-title">
+        <div class="section-shell">
+          <div class="split-heading compact-heading resource-heading">
+            <div>
+              <p class="section-kicker">Explore MemoReason</p>
+              <h2 id="resources-title">Paper, data, code.</h2>
+            </div>
+            <p>Everything needed to inspect the benchmark, reproduce the evaluation, and build on the paired design.</p>
+          </div>
+
+          <div class="resource-grid">
+            <a href="../../assets/memoreason/memoreason-paper.pdf" target="_blank" rel="noopener">
+              <span>01</span><strong>Paper</strong><small>PDF · 32 pages</small><b aria-hidden="true">↗</b>
+            </a>
+            <a href="https://huggingface.co/datasets/memoreason-anonymous/MemoReason" target="_blank" rel="noopener noreferrer">
+              <span>02</span><strong>Dataset</strong><small>Hugging Face</small><b aria-hidden="true">↗</b>
+            </a>
+            <a href="https://anonymous.4open.science/r/MemoReason-D40A/" target="_blank" rel="noopener noreferrer">
+              <span>03</span><strong>Code</strong><small>Evaluation pipeline</small><b aria-hidden="true">↗</b>
+            </a>
+          </div>
+
+          <div class="bibtex-panel">
+            <div>
+              <p class="mini-kicker">Citation</p>
+              <h3>BibTeX</h3>
+            </div>
+            <pre id="bibtex"><code>@misc{tighidet2026memoreason,
+  title  = {MemoReason: Evaluating the Effect of
+            Parametric Memory on Contextual Reasoning in LLMs},
+  author = {Tighidet, Zineddine and Mogini, Andrea and
+            Mei, Jiali and Gallinari, Patrick and
+            Piwowarski, Benjamin},
+  year   = {2026}
+}</code></pre>
+            <button class="copy-button" type="button" data-copy-target="bibtex">
+              Copy BibTeX
+            </button>
+            <span class="copy-status" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell">
+        <a class="wordmark" href="#top">
+          <span class="wordmark-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span>MemoReason</span>
+        </a>
+        <p>Same reasoning. Different familiarity.</p>
+        <p>© <span data-current-year>2026</span> MemoReason authors</p>
+      </div>
+    </footer>
+
+    <dialog class="figure-dialog" id="curves-dialog" aria-labelledby="curves-dialog-title">
+      <div class="dialog-bar">
+        <div>
+          <p class="mini-kicker">Partial replacement experiment</p>
+          <h2 id="curves-dialog-title">Accuracy by replacement proportion</h2>
+        </div>
+        <form method="dialog"><button type="submit" aria-label="Close expanded figure">×</button></form>
+      </div>
+      <img
+        src="../../assets/memoreason/replacement-curves.png"
+        alt="Seven model accuracy curves across entity replacement proportions from zero to one hundred percent"
+        width="1564"
+        height="876"
+      />
+      <p>Shaded bands are 95% document-cluster bootstrap intervals.</p>
+    </dialog>
+
+    <script src="../../assets/memoreason/project.js" defer></script>
+  </body>
+</html>
